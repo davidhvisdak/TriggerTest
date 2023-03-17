@@ -17,7 +17,8 @@ jobs:
         token: ${{ secrets.ACTIONS_TOKEN }}      
     # step-2
     - name: test triggered event      
-       run echo "test trigger"
+      run: |
+       echo "test trigger"
     
                  
 
