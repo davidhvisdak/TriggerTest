@@ -2,11 +2,22 @@ name: trigger_test
 on:  
   repository_dispatch:
     types: [trigger-pipeline]
+env:
+  GH_TOKEN: ${{ secrets.DAVES_TEST }}    
 jobs:
   testing_trigger_event:
     name: testing-trigger
     runs-on: self-hosted
-      run echo "test trigger"
+    steps:
+    # step-1
+    - name: checkout repo
+      uses: actions/checkout@v3.3.0
+      with:
+        #ref: feature/CV-809-icp-path-changes
+        token: ${{ secrets.ACTIONS_TOKEN }}      
+    # step-2
+    - name: test triggered event      
+       run echo "test trigger"
     
                  
 
