@@ -20,7 +20,8 @@ jobs:
     - name: test triggered event      
       run: |
        echo "test trigger"
-       echo "GitHub Ref is ${BRANCH##*/}"
+       echo "GitHub Ref is $env:GITHUB_REF"
+       echo "GitHub Ref Branch is ${BRANCH##*/}"
        echo "The operating system on the runner is $env:RUNNER_OS." 
     
                  
