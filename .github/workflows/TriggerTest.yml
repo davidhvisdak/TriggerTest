@@ -19,6 +19,8 @@ jobs:
     - name: test triggered event      
       run: |
        echo "test trigger"
+       echo "GitHub Ref is ${{ env.GITHUB_REF.split('/')[2] }}"
+       echo "The operating system on the runner is $env:RUNNER_OS." 
     
                  
 
