@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [trigger-pipeline]
 env:
-  GH_TOKEN: ${{ secrets.TRIGGER_TEST }}   
+   GH_TOKEN: ${{ secrets.TRIGGER_TEST }}   
   BRANCH: ${{ github.ref_name }}
 jobs:
   testing_trigger_event:
