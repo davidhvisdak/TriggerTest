@@ -4,7 +4,7 @@ on:
     types: [trigger-pipeline]
 env:
    GH_TOKEN: ${{ secrets.TRIGGER_TEST }}   
-  BRANCH: ${{ github.ref_name }}
+   #BRANCH: ${{ github.ref_name }}
 jobs:
   testing_trigger_event:
     name: testing-trigger
