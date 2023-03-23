@@ -3,7 +3,8 @@ on:
   repository_dispatch:
     types: [trigger-pipeline]
 env:
-   GH_TOKEN: ${{ secrets.TRIGGER_TEST }}   
+   GH_TOKEN: ${{ secrets.TRIGGER_TEST }}
+   BRANCH: = $env:GITHUB_REF.Split('/')[2]
    #BRANCH: ${{ github.ref_name }}
 jobs:
   testing_trigger_event:
@@ -20,6 +21,9 @@ jobs:
     - name: test triggered event      
       run: |
        echo "test trigger"
+       #$part = $env:GITHUB_REF.Split('/')[2]
+       #echo "Github part is $part"
+       echo "GitHub Branch is $BRANCH"
        echo "GitHub Ref is $env:GITHUB_REF"
        echo "GitHub Ref Branch is ${BRANCH##*/}"
        echo "The operating system on the runner is $env:RUNNER_OS." 
