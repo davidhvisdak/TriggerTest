@@ -31,7 +31,7 @@ jobs:
        echo "The operating system on the runner is $env:RUNNER_OS." 
        echo "In Feature Branch"
     - name: Print payload data
-      run: echo "The value of my-key is '${{ github.event.client_payload.Branch_Name }}'"  
+      run: echo "The value of my-key is '${{ github.event.client_payload.ref }}'"  
                  
 
 
