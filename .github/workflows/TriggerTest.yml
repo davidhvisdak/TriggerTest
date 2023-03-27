@@ -20,7 +20,7 @@ jobs:
     # step-2
     - name: test triggered event      
       run: |
-       echo "test trigger is in feature/CV-809-icp-path-changes branch"
+       echo "test trigger is in feature/CV-1143-test"
        #$part = $env:GITHUB_REF.Split('/')[2]
        #echo "Github part is $part"
        echo "GitHub Branch_Name is $Branch_Name"       
