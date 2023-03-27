@@ -15,8 +15,9 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v3.3.0
       with:
-        #ref: feature/CV-809-icp-path-changes
-        token: ${{ secrets.TRIGGER_TEST }}      
+       #ref: feature/CV-809-icp-path-changes
+       ref: ${{ github.event.client_payload.ref }} 
+       token: ${{ secrets.TRIGGER_TEST }}      
     # step-2
     - name: test triggered event      
       run: |
