@@ -3,7 +3,7 @@ on:
   workflow_call:
     secrets:
       WORKFLOW_TOKEN:
-       required: true
+       required: false
   push:
 jobs:
   testing_trigger_event:
