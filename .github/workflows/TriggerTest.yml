@@ -4,9 +4,6 @@ on:
     secrets:
       WORKFLOW_TOKEN:
        required: true
-  push:
-env:
-  GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 jobs:
   testing_trigger_event:
     name: testing-trigger
