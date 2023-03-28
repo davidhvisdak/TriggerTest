@@ -1,5 +1,6 @@
 name: TriggerTest
 on:
+  push:
   workflow_call:
     inputs:
       secrets:
