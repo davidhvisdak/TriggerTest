@@ -2,10 +2,9 @@ name: TriggerTest
 on:
   push:
   workflow_call:
-    inputs:
-      secrets:
+    secrets:
       WORKFLOW_TOKEN:
-        required: true
+       required: true
 jobs:
   testing_trigger_event:
     name: testing-trigger
