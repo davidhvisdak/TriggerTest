@@ -13,11 +13,11 @@ jobs:
     # step-1
     - name: checkout repo
       uses: actions/checkout@v3.3.0
-      ref: davidhvisdak/TriggerTest/.github/workflows/TriggerTest.yml@CV-1143-test
       with:
+       repository: davidhvisdak/TriggerTest/.github/workflows/TriggerTest.yml@CV-1143-test
        token: ${{ secrets.WORKFLOW_TOKEN }}      
     # step-2
-    - Name: Test triggered event
+    - name: Test triggered event
       run: | 
        echo "test trigger is in CV-1143-test"
 
