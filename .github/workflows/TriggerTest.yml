@@ -4,7 +4,7 @@ on:
   workflow_call:
     secrets:
       WORKFLOW_TOKEN:
-       required: true
+       required: false
 jobs:
   testing_trigger_event:
     name: testing-trigger
