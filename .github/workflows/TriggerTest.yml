@@ -1,9 +1,11 @@
 name: TriggerTest
-on:
-  workflow_call:
-    secrets:
-      WORKFLOW_TOKEN:
-       required: true
+on:  
+  repository_dispatch:
+    types: [trigger-pipeline]
+env:
+   GH_TOKEN: ${{ secrets.TRIGGER_TEST }}
+   BRANCH: = $env:GITHUB_REF.Split('/')[2]
+   #BRANCH: ${{ github.ref_name }}
 jobs:
   testing_trigger_event:
     name: testing-trigger
@@ -13,23 +15,31 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v3.3.0
       with:
-       repository: davidhvisdak/TriggerTest
-       token: ${{ secrets.WORKFLOW_TOKEN }}      
+       #ref: feature/CV-809-icp-path-changes
+       ref: ${{ github.event.client_payload.ref }} 
+       token: ${{ secrets.TRIGGER_TEST }}      
     # step-2
-    - name: Test triggered event
-      run: | 
-       echo "test trigger is in CV-1143-test"
+    - name: test triggered event      
+      run: |
+       echo "test trigger is in feature/CV-1143-test"
+       #$part = $env:GITHUB_REF.Split('/')[2]
+       #echo "Github part is $part"
+       echo "GitHub Branch_Name is $Branch_Name"       
+       echo "GitHub Branch is $BRANCH"
+       echo "GitHub Ref is $env:GITHUB_REF"
+       echo "GitHub Ref Branch is ${BRANCH##*/}"
+       echo "The operating system on the runner is $env:RUNNER_OS." 
+       echo "In Feature Branch"
+    - name: Print payload data
+      run: echo "The value of my-key is '${{ github.event.client_payload.Branch_Name }}'"    
+                 
 
 
-
-
-# on:  
-  # repository_dispatch:
-    # types: [trigger-pipeline]
-# env:
-   # GH_TOKEN: ${{ secrets.TRIGGER_TEST }}
-   # BRANCH: = $env:GITHUB_REF.Split('/')[2]
-   # #BRANCH: ${{ github.ref_name }}
+# on:
+  # workflow_call:
+    # secrets:
+      # WORKFLOW_TOKEN:
+       # required: true
 # jobs:
   # testing_trigger_event:
     # name: testing-trigger
@@ -39,24 +49,9 @@ jobs:
     # - name: checkout repo
       # uses: actions/checkout@v3.3.0
       # with:
-       # #ref: feature/CV-809-icp-path-changes
-       # ref: ${{ github.event.client_payload.ref }} 
-       # token: ${{ secrets.TRIGGER_TEST }}      
+       # repository: davidhvisdak/TriggerTest
+       # token: ${{ secrets.WORKFLOW_TOKEN }}      
     # # step-2
-    # - name: test triggered event      
-      # run: |
-       # echo "test trigger is in feature/CV-1143-test"
-       # #$part = $env:GITHUB_REF.Split('/')[2]
-       # #echo "Github part is $part"
-       # echo "GitHub Branch_Name is $Branch_Name"       
-       # echo "GitHub Branch is $BRANCH"
-       # echo "GitHub Ref is $env:GITHUB_REF"
-       # echo "GitHub Ref Branch is ${BRANCH##*/}"
-       # echo "The operating system on the runner is $env:RUNNER_OS." 
-       # echo "In Feature Branch"
-    # - name: Print payload data
-      # run: echo "The value of my-key is '${{ github.event.client_payload.Branch_Name }}'"    
-                 
-
-
-
+    # - name: Test triggered event
+      # run: | 
+       # echo "test trigger is in CV-1143-test"
